@@ -1,41 +1,83 @@
 .mmm-school-lunch-menu {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
 }
 
 .mmm-school-lunch-menu .lunch-day {
   display: flex;
+  flex: 1 1 0;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.3rem;
+  padding: 0 1rem;
+  min-width: 0;
+}
+
+.mmm-school-lunch-menu .lunch-day + .lunch-day {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mmm-school-lunch-menu .lunch-day:first-child {
+  padding-left: 0;
+}
+
+.mmm-school-lunch-menu .lunch-day:last-child {
+  padding-right: 0;
+}
+
+.mmm-school-lunch-menu .lunch-day__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  margin-bottom: 0.15rem;
 }
 
 .mmm-school-lunch-menu .lunch-day__weekday {
   text-transform: none;
   letter-spacing: 0.02em;
+  line-height: 1.1;
 }
 
-.mmm-school-lunch-menu .lunch-day__date,
+.mmm-school-lunch-menu .lunch-day__date {
+  line-height: 1.1;
+  opacity: 0.75;
+}
+
 .mmm-school-lunch-menu .lunch-day__dayoff {
-  margin-bottom: 0.2rem;
+  line-height: 1.25;
 }
 
 .mmm-school-lunch-menu .lunch-section {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
-  margin-top: 0.25rem;
+  gap: 0.12rem;
+  margin-top: 0.18rem;
 }
 
 .mmm-school-lunch-menu .lunch-section__title {
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  line-height: 1.15;
+}
+
+.mmm-school-lunch-menu .lunch-section__divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.22);
+  margin: 0.05rem 0 0.1rem;
+}
+
+.mmm-school-lunch-menu .lunch-section__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.02rem;
 }
 
 .mmm-school-lunch-menu .lunch-item {
-  line-height: 1.4;
+  line-height: 1.2;
 }
 
 .mmm-school-lunch-menu .lunch-item--indented {
-  padding-left: 0.9rem;
+  padding-left: 0.45rem;
 }

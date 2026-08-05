@@ -68,19 +68,24 @@ Module.register("MMM-SchoolLunchMenu", {
     const dayWrapper = document.createElement("section");
     dayWrapper.className = "lunch-day";
 
+    const heading = document.createElement("div");
+    heading.className = "lunch-day__heading";
+
     const weekday = document.createElement("div");
     weekday.className = "lunch-day__weekday bright medium";
     weekday.textContent = day.weekday;
-    dayWrapper.appendChild(weekday);
+    heading.appendChild(weekday);
 
     const date = document.createElement("div");
-    date.className = "lunch-day__date light small";
+    date.className = "lunch-day__date light xsmall";
     date.textContent = day.dateLabel;
-    dayWrapper.appendChild(date);
+    heading.appendChild(date);
+
+    dayWrapper.appendChild(heading);
 
     if (day.isDayOff) {
       const dayOff = document.createElement("div");
-      dayOff.className = "lunch-day__dayoff dimmed small";
+      dayOff.className = "lunch-day__dayoff dimmed xsmall";
       dayOff.textContent = day.dayOffDescription || "No school";
       dayWrapper.appendChild(dayOff);
       return dayWrapper;
@@ -106,14 +111,23 @@ Module.register("MMM-SchoolLunchMenu", {
 
     if (section.title) {
       const title = document.createElement("div");
-      title.className = "lunch-section__title bright small";
+      title.className = "lunch-section__title bright xsmall";
       title.textContent = section.title;
       sectionWrapper.appendChild(title);
+
+      const divider = document.createElement("div");
+      divider.className = "lunch-section__divider";
+      sectionWrapper.appendChild(divider);
     }
 
+    const itemsWrapper = document.createElement("div");
+    itemsWrapper.className = "lunch-section__items";
+
     section.items.forEach((item) => {
-      sectionWrapper.appendChild(this.renderItem(item, true));
+      itemsWrapper.appendChild(this.renderItem(item, true));
     });
+
+    sectionWrapper.appendChild(itemsWrapper);
 
     return sectionWrapper;
   },
