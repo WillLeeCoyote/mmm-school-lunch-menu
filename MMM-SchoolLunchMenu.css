@@ -1,0 +1,41 @@
+.mmm-school-lunch-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mmm-school-lunch-menu .lunch-day {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mmm-school-lunch-menu .lunch-day__weekday {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.mmm-school-lunch-menu .lunch-day__date,
+.mmm-school-lunch-menu .lunch-day__dayoff {
+  margin-bottom: 0.2rem;
+}
+
+.mmm-school-lunch-menu .lunch-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin-top: 0.25rem;
+}
+
+.mmm-school-lunch-menu .lunch-section__title {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mmm-school-lunch-menu .lunch-item {
+  line-height: 1.4;
+}
+
+.mmm-school-lunch-menu .lunch-item--indented {
+  padding-left: 0.9rem;
+}
