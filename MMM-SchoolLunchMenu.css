@@ -1,0 +1,90 @@
+.mmm-school-lunch-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.mmm-school-lunch-menu .lunch-day {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 0.24rem;
+  padding: 0 0.9rem;
+  min-width: 0;
+}
+
+.mmm-school-lunch-menu .lunch-day + .lunch-day {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mmm-school-lunch-menu .lunch-day:first-child {
+  padding-left: 0;
+}
+
+.mmm-school-lunch-menu .lunch-day:last-child {
+  padding-right: 0;
+}
+
+.mmm-school-lunch-menu .lunch-day__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 0.1rem;
+}
+
+.mmm-school-lunch-menu .lunch-day__weekday {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+
+.mmm-school-lunch-menu .lunch-day__date {
+  font-size: 0.46em;
+  line-height: 1;
+  opacity: 0.65;
+}
+
+.mmm-school-lunch-menu .lunch-day__dayoff {
+  line-height: 1.1;
+}
+
+.mmm-school-lunch-menu .lunch-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+  margin-top: 0.14rem;
+  min-width: 0;
+}
+
+.mmm-school-lunch-menu .lunch-section__title {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+}
+
+.mmm-school-lunch-menu .lunch-section__divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.22);
+  margin: 0.03rem 0 0.05rem;
+}
+
+.mmm-school-lunch-menu .lunch-section__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+
+.mmm-school-lunch-menu .lunch-item {
+  line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.mmm-school-lunch-menu .lunch-item--indented {
+  padding-left: 0.35rem;
+}
