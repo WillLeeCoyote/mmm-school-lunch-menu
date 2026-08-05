@@ -5,10 +5,12 @@ class HealthProMenuMapper {
 
   map(apiResponse) {
     const sourceDays = Array.isArray(apiResponse && apiResponse.data) ? apiResponse.data : [];
+    const today = this.getTodayKey();
 
     return sourceDays
       .map((entry) => this.mapDay(entry))
       .filter(Boolean)
+      .filter((day) => day.date >= today)
       .filter((day) => this.config.showDayOffs || !day.isDayOff)
       .sort((left, right) => left.date.localeCompare(right.date))
       .slice(0, this.config.daysToShow);
@@ -37,6 +39,10 @@ class HealthProMenuMapper {
       dayOffDescription: dayOff,
       sections: dayOff ? [] : this.groupSections(sortedItems)
     };
+  }
+
+  getTodayKey(now = new Date()) {
+    return now.toISOString().slice(0, 10);
   }
 
   parseSetting(setting) {
