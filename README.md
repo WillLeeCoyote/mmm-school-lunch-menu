@@ -48,8 +48,6 @@ Add the module to `config/config.js`:
 | `apiBaseUrl` | `https://menus.healthepro.com/api` | HealthPro API base URL |
 | `organizationId` | `1993` | District / organization id |
 | `menuId` | `131180` | Menu id |
-| `year` | current year | Override request year |
-| `month` | current month | Override request month |
 | `daysToShow` | `5` | Number of days to render |
 | `updateInterval` | `3600000` | How often the helper checks for fresh data |
 | `animationSpeed` | `1000` | MagicMirror redraw animation speed |
@@ -58,7 +56,7 @@ Add the module to `config/config.js`:
 | `maxItemsPerCategory` | `null` | Optional per-category item cap |
 
 ## How it works
-- The node helper requests HealthPro data for the configured org/menu/month.
+- The node helper requests HealthPro data for the configured org/menu for the current month and the next month, so the end of a month still shows upcoming days. A failed next-month request is ignored.
 - The mapper parses the `setting.current_display` payload.
 - `category` items become section headings.
 - `recipe` items become displayed menu entries.
@@ -74,8 +72,6 @@ The helper runs on `updateInterval`, but the API is only called again when the c
 The cache key includes:
 - organization id
 - menu id
-- year
-- month
 - current date
 
 That means:
@@ -112,7 +108,6 @@ So the module can redraw on each interval check, even if the underlying menu dat
 - Confirm the module is added to `config/config.js`
 - Confirm `organizationId` and `menuId` are valid
 - Confirm the MagicMirror host can reach HealthPro
-- Remove `year` and `month` overrides if you want the current month automatically
 
 ## Low-hanging next extensions
 - Resolve `menuId` automatically from a school selector
