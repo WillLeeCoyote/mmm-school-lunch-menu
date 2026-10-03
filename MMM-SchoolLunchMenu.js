@@ -5,8 +5,6 @@ Module.register("MMM-SchoolLunchMenu", {
     apiBaseUrl: "https://menus.healthepro.com/api",
     organizationId: 1993,
     menuId: 131180,
-    year: null,
-    month: null,
     daysToShow: 5,
     updateInterval: 60 * 60 * 1000,
     animationSpeed: 1000,

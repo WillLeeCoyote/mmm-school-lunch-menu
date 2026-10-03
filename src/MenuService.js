@@ -40,9 +40,7 @@ class MenuService {
   }
 
   getCacheKey(now) {
-    const year = this.config.year || now.getFullYear();
-    const month = this.config.month || now.getMonth() + 1;
-    return `${this.config.organizationId}:${this.config.menuId}:${year}:${month}:${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    return `${this.config.organizationId}:${this.config.menuId}:${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
   }
 }
 
