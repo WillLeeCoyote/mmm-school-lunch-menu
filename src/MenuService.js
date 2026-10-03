@@ -14,27 +14,35 @@ class MenuService {
       return this.cachedMenu;
     }
 
-    const menuId = await this.client.getMenuIdForSchool();
-    if (!menuId) {
-      throw new Error("No menu ID configured for the selected school.");
+    try {
+      const menuId = await this.client.getMenuIdForSchool();
+      if (!menuId) {
+        throw new Error("No menu ID configured for the selected school.");
+      }
+
+      const apiResponse = await this.client.fetchMenu(now);
+      const days = this.mapper.map(apiResponse);
+
+      this.cachedMenu = {
+        days,
+        lastUpdated: now.toISOString()
+      };
+      this.cacheKey = cacheKey;
+
+      return this.cachedMenu;
+    } catch (error) {
+      if (this.cachedMenu) {
+        console.warn(`MenuService: fetch failed, serving cached menu: ${error.message}`);
+        return this.cachedMenu;
+      }
+      throw error;
     }
-
-    const apiResponse = await this.client.fetchMenu(now);
-    const days = this.mapper.map(apiResponse);
-
-    this.cachedMenu = {
-      days,
-      lastUpdated: now.toISOString()
-    };
-    this.cacheKey = cacheKey;
-
-    return this.cachedMenu;
   }
 
   getCacheKey(now) {
     const year = this.config.year || now.getFullYear();
     const month = this.config.month || now.getMonth() + 1;
-    return `${this.config.organizationId}:${this.config.menuId}:${year}:${month}:${now.toISOString().slice(0, 10)}`;
+    return `${this.config.organizationId}:${this.config.menuId}:${year}:${month}:${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
   }
 }
 
